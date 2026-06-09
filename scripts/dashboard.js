@@ -19,7 +19,7 @@ if (transactionForm && transactionList) {
     var type = document.getElementById('type').value;
     var amountValue = parseFloat(amount);
     if (description === '' || isNaN(amountValue) || amountValue <= 0) {
-      return;
+      return alert('Please enter valid details.');
     }
 
     var sign = '+ $';
