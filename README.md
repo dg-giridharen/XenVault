@@ -1,42 +1,53 @@
 # XenVault
 
-A small responsive frontend application for retailers to manually track sales and expenses.
+A lightweight frontend app for small retailers to manually track daily sales and expenses.
 
 ## Overview
-This project provides a simple three-page structure in the `pages/` directory:
+This project includes a landing page, a login flow, and a dashboard for adding income and expense transactions.
 
-- `pages/index.html` — landing page with app overview and navigation
-- `pages/login.html` — login page for user authentication
-- `pages/dashboard.html` — dashboard page with transaction tracking, summary totals, and history
+- `index.html` — landing page with product overview and entry point
+- `pages/login.html` — login page that saves a session key in local storage
+- `pages/dashboard.html` — protected dashboard showing totals and transaction history
 
-The app uses simple semantic HTML, shared CSS in `css/style.css`, and vanilla JavaScript in `scripts/`.
+The app uses Tailwind CSS via CDN, a shared stylesheet in `css/style.css`, and vanilla JavaScript in `scripts/`.
+
+## Features
+- Landing page with clear call-to-action
+- Simple email/password login form
+- Local storage session handling for dashboard access
+- Add income and expenses with live totals
+- Transaction history list updates instantly
+- Logout support with session cleanup
 
 ## Tech Stack
-- **HTML5:** Semantic structure with `header`, `main`, `section`, `form`, `fieldset`, and `ul`
-- **CSS3:** Shared stylesheet using CSS Grid and Flexbox for responsive layout
-- **JavaScript:** Basic vanilla scripts for login and dashboard transaction tracking
+- **HTML5:** Clean semantic page structure and accessible forms
+- **CSS3:** Shared styling plus Tailwind utility classes for responsive layout
+- **JavaScript:** Vanilla scripts for login, session guard, and transaction state
 
 ## Project Structure
 ```text
 XenVault/
-├── assets/           # Static media and logos
+├── assets/             # Static media and logos
 ├── css/
-│   └── style.css     # Shared styles for all pages
-├── pages/            # HTML page files
+│   └── style.css       # Shared styles for all pages
+├── pages/              # Login and dashboard views
 │   ├── dashboard.html
-│   ├── index.html
 │   └── login.html
 ├── scripts/
-│   ├── auth.js       # Login form behavior and session setup
-│   └── dashboard.js  # Dashboard tracking logic and protected route behavior
+│   ├── auth.js         # Login behavior and session setup
+│   └── dashboard.js    # Dashboard logic and protected route guard
+├── index.html          # Landing page
 └── README.md
 ```
 
 ## Running the App
-Open `pages/index.html` in your browser to view the landing page. From there, use the login link to reach `pages/login.html` and then access `pages/dashboard.html`.
+1. Open `index.html` in your browser.
+2. Click **Start tracking** to go to `pages/login.html`.
+3. Enter any email and password to sign in.
+4. Use the dashboard at `pages/dashboard.html` to add transactions.
 
 ## Notes
-- The dashboard uses local storage to simulate a login session.
-- Transaction history and totals reset when the page is refreshed.
-- The page structure is intentionally simple and beginner-friendly.
+- The dashboard is protected by a simple local storage session token.
+- Totals and transaction items are stored in memory only and reset when the page reloads.
+- This app is designed as a simple demo and starter UI for retail tracking.
 
