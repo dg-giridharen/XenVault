@@ -1,20 +1,45 @@
+:root {
+  --body-bg: #02072f;
+  --body-text: #e2e8f0;
+  --panel-bg: #0f172a;
+  --border: #334155;
+  --input-bg: #111827;
+  --muted: #94a3b8;
+  --button-bg: #2563eb;
+  --button-text: #ffffff;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  background: #02072f;
-  color: #e2e8f0;
+  background: var(--body-bg) !important;
+  color: var(--body-text) !important;
   font-family: Arial, sans-serif;
+  transition: background .3s ease, color .3s ease;
 }
 
+body.light-theme {
+  --body-bg: #f8fafc;
+  --body-text: #0f172a;
+  --panel-bg: #ffffff;
+  --border: #cbd5e1;
+  --input-bg: #f8fafc;
+  --muted: #64748b;
+  --button-bg: #6366f1;
+  --button-text: #ffffff;
+}
+
+.theme-card,
 .page-header,
 footer,
 .custom-card {
-  background: #0f172a;
+  background: var(--panel-bg);
 }
 
+.theme-card,
 .page-header,
 .custom-card {
-  border: 1px solid #334155;
+  border: 1px solid var(--border);
   border-radius: 12px;
 }
 
@@ -30,36 +55,75 @@ footer,
 }
 
 .btn-primary {
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--button-bg);
+  color: var(--button-text);
 }
 
 .btn-secondary {
   background: #334155;
-  color: #e2e8f0;
+  color: var(--body-text);
 }
 
-.custom-input {
+.theme-input,
+.custom-input,
+.theme-select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #334155;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: #111827;
-  color: #e2e8f0;
+  background: var(--input-bg);
+  color: var(--body-text);
   box-sizing: border-box;
 }
 
+.theme-input:focus,
+.theme-select:focus,
 .custom-input:focus {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--button-bg);
 }
 
+.theme-text-muted {
+  color: var(--muted);
+}
+
+.theme-transaction-item,
 .transaction-item {
-  background: #111827;
-  border: 1px solid #334155;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px;
 }
 
 footer {
-  border-top: 1px solid #334155;
+  border-top: 1px solid var(--border);
+}
+
+/* Stronger theme overrides to beat Tailwind utility styles injected by the CDN */
+body.light-theme .theme-card,
+body.light-theme .page-header,
+body.light-theme .custom-card {
+  background: var(--panel-bg) !important;
+  border-color: var(--border) !important;
+  color: var(--body-text) !important;
+}
+
+body.light-theme .theme-text-muted {
+  color: var(--muted) !important;
+}
+
+body.light-theme .btn-primary {
+  background: var(--button-bg) !important;
+  color: var(--button-text) !important;
+}
+
+body.light-theme .theme-input,
+body.light-theme .custom-input,
+body.light-theme .theme-select {
+  background: var(--input-bg) !important;
+  color: var(--body-text) !important;
+  border-color: var(--border) !important;
+}
+
+.theme-accent {
+  color: var(--button-bg) !important;
 }
