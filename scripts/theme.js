@@ -1,27 +1,22 @@
-var themeToggle = document.getElementById('themeToggle');
+const button = document.getElementById('theme-toggle');
 
-function applyTheme(themeName) {
-  document.body.classList.toggle('light-theme', themeName === 'light');
-  if (themeToggle) {
-    themeToggle.textContent = themeName === 'light' ? 'Switch to dark' : 'Switch to light';
+const applyTheme = (theme) => {
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
   }
-}
+};
 
-function loadTheme() {
-  var savedTheme = localStorage.getItem('xenvault_theme') || 'dark';
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
   applyTheme(savedTheme);
 }
 
-function toggleTheme() {
-  var nextTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
-  localStorage.setItem('xenvault_theme', nextTheme);
-  applyTheme(nextTheme);
-}
-
-loadTheme();
-
-if (themeToggle) {
-  themeToggle.addEventListener('click', function () {
-    toggleTheme();
+if (button) {
+  button.addEventListener('click', () => {
+    const nextTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+    applyTheme(nextTheme);
+    localStorage.setItem('theme', nextTheme);
   });
 }

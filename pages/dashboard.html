@@ -4,68 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard | XenVault</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" type="image/png" href="../assets/Xen_logo.png">
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
-  <div class="max-w-4xl mx-auto px-6 py-8">
-    <header class="flex items-center justify-between mb-8">
+<body class="page-frame">
+  <div class="page-content dashboard-shell">
+    <header class="dashboard-header">
       <div>
-        <p class="text-xs uppercase text-slate-400 theme-text-muted">XenVault</p>
-        <h1 class="mt-2 text-3xl font-semibold">Dashboard</h1>
+        <p class="text-muted">XenVault</p>
+        <h1>Dashboard</h1>
       </div>
-      <div class="flex gap-3">
-        <button id="themeToggle" class="rounded-lg bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-slate-700">Switch to light</button>
-        <button id="logoutBtn" class="rounded-lg bg-purple-900 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-purple-700">Logout</button>
+      <div class="button-row">
+        <button id="theme-toggle" class="btn-secondary">Toggle Theme</button>
+        <button id="logoutBtn" class="btn-secondary">Logout</button>
       </div>
     </header>
 
-    <main class="space-y-6">
-      <section class="flex flex-col gap-4 sm:flex-row">
-        <div class="flex-1 rounded-lg border border-slate-800 bg-slate-900 p-4 theme-card">
-          <p class="text-sm text-slate-400 theme-text-muted">Total income</p>
-          <p id="totalIncome" class="mt-2 text-2xl font-semibold text-green-300">$0.00</p>
+    <main class="dashboard-main">
+      <section class="stat-grid">
+        <div class="stat-card">
+          <p class="text-muted">Total income</p>
+          <p id="totalIncome" class="stat-value stat-income">$0.00</p>
         </div>
-        <div class="flex-1 rounded-lg border border-slate-800 bg-slate-900 p-4 theme-card">
-          <p class="text-sm text-slate-400 theme-text-muted">Total expenses</p>
-          <p id="totalExpense" class="mt-2 text-2xl font-semibold text-red-300">$0.00</p>
+        <div class="stat-card">
+          <p class="text-muted">Total expenses</p>
+          <p id="totalExpense" class="stat-value stat-expense">$0.00</p>
         </div>
-        <div class="flex-1 rounded-lg border border-slate-800 bg-slate-900 p-4 theme-card">
-          <p class="text-sm text-slate-400 theme-text-muted">Net balance</p>
-          <p id="netBalance" class="mt-2 text-2xl font-semibold text-sky-300">$0.00</p>
+        <div class="stat-card">
+          <p class="text-muted">Net balance</p>
+          <p id="netBalance" class="stat-value stat-balance">$0.00</p>
         </div>
       </section>
 
-      <section class="rounded-lg border border-slate-800 bg-slate-900 p-4 theme-card">
-        <h2 class="text-xl font-semibold">Add a transaction</h2>
-        <form id="transactionForm" class="mt-4 space-y-4" autocomplete="off">
-          <div>
-            <label for="description" class="block text-sm text-slate-300">Description</label>
-            <input id="description" name="description" type="text" placeholder="Sale of goods" required class="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-3 text-slate-100 theme-input" />
+      <section class="panel-card">
+        <h2>Add a transaction</h2>
+        <form id="transactionForm" class="form-layout" autocomplete="off">
+          <div class="form-field">
+            <label for="description">Description</label>
+            <input id="description" name="description" type="text" placeholder="Sale of goods" required class="field-input" />
           </div>
-          <div>
-            <label for="amount" class="block text-sm text-slate-300">Amount</label>
-            <input id="amount" name="amount" type="number" step="0.01" min="0.01" placeholder="100.00" required class="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-3 text-slate-100 theme-input" />
+          <div class="form-field">
+            <label for="amount">Amount</label>
+            <input id="amount" name="amount" type="number" step="0.01" min="0.01" placeholder="100.00" required class="field-input" />
           </div>
-          <div>
-            <label for="type" class="block text-sm text-slate-300">Type</label>
-            <select id="type" name="type" required class="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-3 text-slate-100 theme-input">
+          <div class="form-field">
+            <label for="type">Type</label>
+            <select id="type" name="type" required class="field-input">
               <option value="Income">Income</option>
               <option value="Expense">Expense</option>
             </select>
           </div>
-          <button type="submit" class="w-full rounded-lg bg-purple-900 px-4 py-3 text-sm font-semibold text-white hover:bg-purple-700">Add</button>
+          <button type="submit" class="btn-primary btn-full">Add</button>
         </form>
       </section>
 
-      <section class="rounded-lg border border-slate-800 bg-slate-900 p-4 theme-card">
-        <h2 class="text-xl font-semibold">History</h2>
-        <ul id="transactionList" class="mt-4 space-y-3" aria-live="polite"></ul>
+      <section class="panel-card">
+        <h2>History</h2>
+        <ul id="transactionList" class="history-list" aria-live="polite"></ul>
       </section>
     </main>
 
-    <footer class="mt-8 border-t border-slate-800 pt-5 text-sm text-slate-500 text-center theme-text-muted">
+    <footer class="page-footer">
       <p>Simple cash tracking for retail work.</p>
     </footer>
   </div>

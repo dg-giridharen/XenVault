@@ -4,45 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XenVault</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="assets/Xen_logo.png">
 </head>
-<body class="min-h-screen">
-  <div class="min-h-screen flex flex-col justify-between px-6 py-6">
-    <div class="mx-auto max-w-screen-xl space-y-10">
-      <header class="w-full rounded-3xl p-8 shadow-xl shadow-slate-950/40 text-center theme-card">
-        <div class="flex justify-end">
-          <button id="themeToggle" class="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold btn-secondary">Switch to light</button>
+<body>
+  <div class="layout">
+    <div class="page-content">
+      <header class="hero-header">
+        <div class="button-row">
+          <button id="theme-toggle" class="btn-secondary">Toggle Theme</button>
         </div>
-        <p class="text-7xl uppercase tracking-[0.3em] theme-accent">XenVault</p>
-        <h1 class="mt-4 text-4xl font-semibold tracking-tight">Simple cash tracking for small retailers</h1>
-        <p class="mt-4 mx-auto max-w-2xl theme-text-muted">Track income and expenses with a clean dashboard, simple login, and fast totals. Perfect for beginners who want a practical place to manage daily sales.</p>
-        <div class="mt-8 flex flex-col items-center gap-3 text-center">
-          <a href="pages/login.html" class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold btn-primary">Start tracking</a>
-          <span class="text-sm theme-text-muted">No account setup needed — just enter your email and password.</span>
+        <p class="hero-logo">XenVault</p>
+        <h1 class="hero-title">Simple cash tracking for small retailers</h1>
+        <p class="hero-copy">Track income and expenses with a clean dashboard, simple login, and fast totals. Perfect for beginners who want a practical place to manage daily sales.</p>
+        <div class="hero-actions">
+          <a href="pages/login.html" class="btn-primary">Start tracking</a>
+          <span class="hero-note">No account setup needed — just enter your email and password.</span>
         </div>
       </header>
-      <section class="grid gap-4 sm:grid-cols-3">
-        <div class="rounded-3xl p-5 theme-card">
-          <p class="text-sm uppercase tracking-[0.2em] theme-text-muted">Landing</p>
-          <h2 class="mt-3 text-xl font-semibold">Clear start page</h2>
-          <p class="mt-2 theme-text-muted">Explain the app</p>
+      <section class="section-grid">
+        <div class="feature-card">
+          <p class="feature-label">Landing</p>
+          <h2>Clear start page</h2>
+          <p class="feature-copy">Explain the app</p>
         </div>
-        <div class="rounded-3xl p-5 theme-card">
-          <p class="text-sm uppercase tracking-[0.2em] theme-text-muted">Login</p>
-          <h2 class="mt-3 text-xl font-semibold">Easy sign-in</h2>
-          <p class="mt-2 theme-text-muted">Use a simple email and password to reach your dashboard.</p>
+        <div class="feature-card">
+          <p class="feature-label">Login</p>
+          <h2>Easy sign-in</h2>
+          <p class="feature-copy">Use a simple email and password to reach your dashboard.</p>
         </div>
-        <div class="rounded-3xl p-5 theme-card">
-          <p class="text-sm uppercase tracking-[0.2em] theme-text-muted">Dashboard</p>
-          <h2 class="mt-3 text-xl font-semibold">Quick totals</h2>
-          <p class="mt-2 theme-text-muted">Enter income or expenses and see totals update right away.</p>
+        <div class="feature-card">
+          <p class="feature-label">Dashboard</p>
+          <h2>Quick totals</h2>
+          <p class="feature-copy">Enter income or expenses and see totals update right away.</p>
         </div>
       </section>
     </div>
 
-    <footer class="text-center text-sm theme-text-muted">
+    <footer class="page-footer">
       <p>XenVault — simple manual tracker for retail.</p>
     </footer>
   </div>
