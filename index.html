@@ -18,7 +18,7 @@
         <h1 class="hero-title">Simple cash tracking for small retailers</h1>
         <p class="hero-copy">Track income and expenses with a clean dashboard, simple login, and fast totals. Perfect for beginners who want a practical place to manage daily sales.</p>
         <div class="hero-actions">
-          <a href="pages/login.html" class="btn-primary">Start tracking</a>
+          <button id="start-tracking" class="btn-primary">Start tracking</button>
           <span class="hero-note">No account setup needed — just enter your email and password.</span>
         </div>
       </header>
@@ -46,5 +46,28 @@
     </footer>
   </div>
   <script src="scripts/theme.js"></script>
+  <!-- Inline login modal -->
+  <div id="loginModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button id="closeLogin" class="modal-close" aria-label="Close">×</button>
+      <div class="card-heading">
+        <p class="text-muted">XenVault</p>
+        <h2 id="loginTitle">Login</h2>
+        <p class="hero-copy">Sign in to open the dashboard.</p>
+      </div>
+      <form id="loginForm" class="form-layout" autocomplete="off">
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="name@company.com" required class="field-input" />
+        </div>
+        <div class="form-field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="••••••••" required class="field-input" />
+        </div>
+        <button type="submit" class="btn-primary btn-full">Login</button>
+      </form>
+    </div>
+  </div>
+  <script src="scripts/auth.js"></script>
 </body>
 </html>
