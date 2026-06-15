@@ -1,46 +1,59 @@
-// Handle login form submission for both inline modal and standalone page
-var loginForm = document.getElementById('loginForm');
-if (loginForm) {
-  loginForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-    var emailEl = document.getElementById('email');
-    var passwordEl = document.getElementById('password');
-    var email = emailEl ? emailEl.value.trim() : '';
-    var password = passwordEl ? passwordEl.value.trim() : '';
-    if (email === '' || password === '') {
-      return;
-    }
-    localStorage.setItem('xenvault_session', 'active');
-    localStorage.setItem('xenvault_user', email);
+const active = localStorage.getItem('xenvault_session') === 'active';
+const isPages = location.pathname.includes('/pages/');
+const dashUrl = isPages ? 'dashboard.html' : 'pages/dashboard.html';
+const homeUrl = isPages ? '../index.html' : 'index.html';
 
-    // Decide redirect path depending on current page location
-    var redirectPath = window.location.pathname.indexOf('/pages/') !== -1 ? 'dashboard.html' : 'pages/dashboard.html';
-    window.location.href = redirectPath;
-  });
+function login(email) {
+  localStorage.setItem('xenvault_session', 'active');
+  localStorage.setItem('xenvault_user', email);
+  location.href = dashUrl;
 }
 
-// Simple modal show/hide for the landing page
-var startBtn = document.getElementById('start-tracking');
-var loginModal = document.getElementById('loginModal');
-var closeLogin = document.getElementById('closeLogin');
-if (startBtn && loginModal) {
-  startBtn.addEventListener('click', function () {
-    loginModal.classList.add('show');
-    // focus first field when opened
-    var f = document.getElementById('email');
-    if (f) f.focus();
-  });
+function handleGoogleLogin(resp) {
+  const email = JSON.parse(atob(resp.credential.split('.')[1])).email;
+  login(email || 'Google User');
 }
-if (closeLogin && loginModal) {
-  closeLogin.addEventListener('click', function () {
-    loginModal.classList.remove('show');
+
+function initGoogleSignIn() {
+  const btn = document.getElementById('googleSignInButton');
+  if (!window.google || !btn) return;
+  google.accounts.id.initialize({
+    client_id: '52468911070-9e5hv1d1up5c1s55j4e6qluig8jfj7jv.apps.googleusercontent.com',
+    callback: handleGoogleLogin
   });
+  google.accounts.id.renderButton(btn, { theme: 'outline', size: 'large', width: '100%' });
 }
-// Close when clicking on overlay
-if (loginModal) {
-  loginModal.addEventListener('click', function (e) {
-    if (e.target === loginModal) {
-      loginModal.classList.remove('show');
-    }
-  });
+
+document.getElementById('loginForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  login(document.getElementById('email').value.trim());
+});
+
+document.getElementById('closeLogin')?.addEventListener('click', () => {
+  document.getElementById('loginSection')?.classList.remove('show');
+});
+
+const modal = document.getElementById('loginSection');
+modal?.addEventListener('click', (e) => {
+  if (e.target === modal) modal.classList.remove('show');
+});
+
+const navBtn = document.getElementById('navLoginBtn');
+if (navBtn) {
+  if (active) {
+    navBtn.textContent = 'Dashboard';
+    navBtn.onclick = () => location.href = dashUrl;
+  } else {
+    navBtn.onclick = () => {
+      if (modal) modal.classList.add('show');
+      else location.href = homeUrl;
+    };
+  }
 }
+
+document.getElementById('start-tracking')?.addEventListener('click', () => {
+  if (active) location.href = dashUrl;
+  else modal?.classList.add('show');
+});
+
+initGoogleSignIn();

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback | XenVault</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/png" href="../assets/Xen_logo.png">
+</head>
+<body class="page-frame">
+  <header class="main-navbar">
+    <div class="nav-brand">
+      <img src="../assets/Xen_logo.png" alt="XenVault Logo" class="nav-logo" />
+      <span class="nav-title">XenVault</span>
+    </div>
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">Home</a>
+      <a href="dashboard.html" class="nav-item">Dashboard</a>
+      <a href="feedback.html" class="nav-item">Feedback</a>
+      <a href="about.html" class="nav-item">About</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-secondary" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
+      <a href="../index.html" id="navLoginBtn" class="btn-secondary">Login</a>
+    </div>
+  </header>
+  <main class="page-content feedback-shell">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSe7ehIXEy6YnY6RJxebQ0wHL8HfRYAfHTauC3RjNly1jwVdGQ/viewform?embedded=true"
+      style="width: 100%; height: calc(100vh - 120px); border: 0; margin: 0; padding: 0;"
+      loading="lazy"
+    ></iframe>
+    <p class="page-note" style="margin-top: 2rem;"><a href="../index.html" class="link-secondary">← Back to home</a></p>
+  </main>
+  <script src="../scripts/theme.js"></script>
+  <script src="../scripts/auth.js"></script>
+</body>
+</html>

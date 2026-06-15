@@ -8,18 +8,24 @@
   <link rel="icon" type="image/png" href="../assets/Xen_logo.png">
 </head>
 <body class="page-frame">
-  <div class="page-content dashboard-shell">
-    <header class="dashboard-header">
-      <div>
-        <p class="text-muted">XenVault</p>
-        <h1>Dashboard</h1>
-      </div>
-      <div class="button-row">
-        <button id="theme-toggle" class="btn-secondary">Toggle Theme</button>
-        <button id="logoutBtn" class="btn-secondary">Logout</button>
-      </div>
-    </header>
+  <header class="main-navbar">
+    <div class="nav-brand">
+      <img src="../assets/Xen_logo.png" alt="XenVault Logo" class="nav-logo" />
+      <span class="nav-title">XenVault</span>
+    </div>
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-item">Home</a>
+      <a href="dashboard.html" class="nav-item">Dashboard</a>
+      <a href="feedback.html" class="nav-item">Feedback</a>
+      <a href="about.html" class="nav-item">About</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-secondary" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
+      <button id="logoutBtn" class="btn-secondary">Logout</button>
+    </div>
+  </header>
 
+  <div class="page-content dashboard-shell">
     <main class="dashboard-main">
       <section class="stat-grid">
         <div class="stat-card">
@@ -36,38 +42,55 @@
         </div>
       </section>
 
-      <section class="panel-card">
-        <h2>Add a transaction</h2>
-        <form id="transactionForm" class="form-layout" autocomplete="off">
-          <div class="form-field">
-            <label for="description">Description</label>
-            <input id="description" name="description" type="text" placeholder="Sale of goods" required class="field-input" />
+      <section class="charts-container">
+        <div class="panel-card chart-panel">
+          <h2 class="text-center">Income vs Expenses</h2>
+          <div class="chart-wrapper">
+            <canvas id="incomeExpenseChart"></canvas>
           </div>
-          <div class="form-field">
-            <label for="amount">Amount</label>
-            <input id="amount" name="amount" type="number" step="0.01" min="0.01" placeholder="100.00" required class="field-input" />
+        </div>
+        <div class="panel-card chart-panel">
+          <h2 class="text-center">Balance Timeline</h2>
+          <div class="chart-wrapper">
+            <canvas id="timelineChart"></canvas>
           </div>
-          <div class="form-field">
-            <label for="type">Type</label>
-            <select id="type" name="type" required class="field-input">
-              <option value="Income">Income</option>
-              <option value="Expense">Expense</option>
-            </select>
-          </div>
-          <button type="submit" class="btn-primary btn-full">Add</button>
-        </form>
+        </div>
       </section>
 
-      <section class="panel-card">
-        <h2>History</h2>
-        <ul id="transactionList" class="history-list" aria-live="polite"></ul>
-      </section>
+      <div class="dashboard-panels">
+        <section class="panel-card action-panel">
+          <div class="action-icon">💸</div>
+          <h2>Log transactions</h2>
+          <p class="text-muted">Add your retail income and expenses dynamically.</p>
+          <a href="add_transaction.html" class="btn-primary">＋ Add Transaction</a>
+        </section>
+
+        <section class="panel-card">
+          <h2 class="text-center">History</h2>
+          <div class="history-table-container">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Date & Time</th>
+                </tr>
+              </thead>
+              <tbody id="transactionTableBody">
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="page-footer">
       <p>Simple cash tracking for retail work.</p>
     </footer>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="../scripts/theme.js"></script>
   <script src="../scripts/dashboard.js"></script>
 </body>

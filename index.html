@@ -6,37 +6,45 @@
   <title>XenVault</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="assets/Xen_logo.png">
+<script src="scripts/auth.js" defer></script>
+<script src="https://accounts.google.com/gsi/client" async defer onload="initGoogleSignIn()"></script>
 </head>
 <body>
+  <header class="main-navbar">
+    <div class="nav-brand">
+      <img src="assets/Xen_logo.png" alt="XenVault Logo" class="nav-logo" />
+      <span class="nav-title">XenVault</span>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-secondary" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
+      <button id="navLoginBtn" class="btn-primary" type="button" onclick="document.getElementById('loginSection').classList.add('show');">Login</button>
+    </div>
+  </header>
   <div class="layout">
     <div class="page-content">
-      <header class="hero-header">
-        <div class="button-row">
-          <button id="theme-toggle" class="btn-secondary">Toggle Theme</button>
-        </div>
+      <header class="hero-container">
         <p class="hero-logo">XenVault</p>
         <h1 class="hero-title">Simple cash tracking for small retailers</h1>
-        <p class="hero-copy">Track income and expenses with a clean dashboard, simple login, and fast totals. Perfect for beginners who want a practical place to manage daily sales.</p>
-        <div class="hero-actions">
+        <p class="hero-text">Track income and expenses with a clean dashboard, simple login, and fast totals. Perfect for beginners who want a practical place to manage daily sales.</p>
+        <div class="hero-button">
           <button id="start-tracking" class="btn-primary">Start tracking</button>
-          <span class="hero-note">No account setup needed — just enter your email and password.</span>
         </div>
       </header>
       <section class="section-grid">
         <div class="feature-card">
           <p class="feature-label">Landing</p>
           <h2>Clear start page</h2>
-          <p class="feature-copy">Explain the app</p>
+          <p>Explain the app</p>
         </div>
         <div class="feature-card">
           <p class="feature-label">Login</p>
           <h2>Easy sign-in</h2>
-          <p class="feature-copy">Use a simple email and password to reach your dashboard.</p>
+          <p>Use a simple email and password to reach your dashboard.</p>
         </div>
         <div class="feature-card">
           <p class="feature-label">Dashboard</p>
           <h2>Quick totals</h2>
-          <p class="feature-copy">Enter income or expenses and see totals update right away.</p>
+          <p>Enter income or expenses and see totals update right away.</p>
         </div>
       </section>
     </div>
@@ -45,29 +53,27 @@
       <p>XenVault — simple manual tracker for retail.</p>
     </footer>
   </div>
-  <script src="scripts/theme.js"></script>
-  <!-- Inline login modal -->
-  <div id="loginModal" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
-      <button id="closeLogin" class="modal-close" aria-label="Close">×</button>
-      <div class="card-heading">
-        <p class="text-muted">XenVault</p>
-        <h2 id="loginTitle">Login</h2>
-        <p class="hero-copy">Sign in to open the dashboard.</p>
+  
+<section id="loginSection" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <button id="closeLogin" class="modal-close" aria-label="Close">&times;</button>
+    <h2>Login</h2>
+    <form id="loginForm" class="form-layout" autocomplete="off">
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="name@company.com" required class="field-input" />
       </div>
-      <form id="loginForm" class="form-layout" autocomplete="off">
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="name@company.com" required class="field-input" />
-        </div>
-        <div class="form-field">
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="••••••••" required class="field-input" />
-        </div>
-        <button type="submit" class="btn-primary btn-full">Login</button>
-      </form>
-    </div>
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="••••••••" required class="field-input" />
+      </div>
+      <button type="submit" class="btn-primary btn-full">Login</button>
+    </form>
+    <div class="social-separator">or</div>
+    <div id="googleSignInButton" class="social-login"></div>
   </div>
-  <script src="scripts/auth.js"></script>
+</section>
+<script src="scripts/theme.js"></script>
+
 </body>
 </html>

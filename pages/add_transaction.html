@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Transaction | XenVault</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/png" href="../assets/Xen_logo.png">
+</head>
+<body class="page-frame">
+  <header class="main-navbar">
+    <div class="nav-brand">
+      <img src="../assets/Xen_logo.png" alt="XenVault Logo" class="nav-logo" />
+      <span class="nav-title">XenVault</span>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn-secondary" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
+      <button id="logoutBtn" class="btn-secondary">Logout</button>
+    </div>
+  </header>
+
+  <main class="page-content main-card" style="max-width: 32rem; margin-top: 2rem;">
+    <div class="card-heading">
+      <p class="text-muted">XenVault</p>
+      <h1>Add a transaction</h1>
+      <p class="hero-copy" style="color: inherit;">Record a new income or expense transaction.</p>
+    </div>
+    <form id="transactionForm" class="form-layout" autocomplete="off">
+      <div class="form-field">
+        <label for="description">Description</label>
+        <input id="description" name="description" type="text" placeholder="Sale of goods" required class="field-input" />
+      </div>
+      <div class="form-field">
+        <label for="amount">Amount</label>
+        <input id="amount" name="amount" type="number" step="0.01" min="0.01" placeholder="100.00" required class="field-input" />
+      </div>
+      <div class="form-field">
+        <label for="type">Type</label>
+        <select id="type" name="type" required class="field-input">
+          <option value="Income">Income</option>
+          <option value="Expense">Expense</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary btn-full">Add</button>
+    </form>
+    <p class="page-note"><a href="dashboard.html" class="link-secondary">← Back to dashboard</a></p>
+  </main>
+
+  <script src="../scripts/theme.js"></script>
+  <script src="../scripts/add_transaction.js"></script>
+</body>
+</html>
