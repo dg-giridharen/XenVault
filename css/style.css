@@ -10,6 +10,7 @@
   --secondary-bg: #c29bff;
   --secondary-text: #1f2937;
   --item-bg: #f1f5f9;
+  --border-table: black;
 }
 
 html.dark {
@@ -23,6 +24,7 @@ html.dark {
   --secondary-bg: #c29bff;
   --secondary-text: #f3f4f6;
   --item-bg: #334155;
+  --border-table: white;
 }
 
 * {
@@ -318,19 +320,21 @@ body {
 .history-table-container {
   width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: 4px;
+  border: 1px solid var(--border-table);
+  border-radius: 20px;
 }
 
 .history-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+  
 }
 
 .history-table th, .history-table td {
   padding: 0.75rem;
   border-bottom: 1px solid var(--border);
+  
 }
 
 .history-table th {
